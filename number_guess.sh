@@ -41,10 +41,11 @@ GUESS_GAME() {
       read GUESS
     fi
   done
+  GUESS_COUNT=$(($GUESS_COUNT+1))
   echo "You guessed it in $GUESS_COUNT tries. The secret number was $TARGET_NUMBER. Nice job!"
-  if [[ $GUESS_COUNT -lt $BEST_SCORE || $BEST_SCORE == 0 ]]
+
+  if [[ $GUESS_COUNT -lt $BEST_SCORE || $BEST_SCORE -eq 0 ]]
   then
-    echo "hello hello"
     INSERT_SCORE=$($PSQL "UPDATE users SET best_score = $GUESS_COUNT, games_count = $TOTAL_GAMES WHERE username='$USERNAME';")
   else
     INSERT_SCORE=$($PSQL "UPDATE users SET games_count = $TOTAL_GAMES WHERE username='$USERNAME';")
