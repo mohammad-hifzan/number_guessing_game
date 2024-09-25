@@ -6,6 +6,7 @@ TARGET_NUMBER=$[ ( $RANDOM % 1000 )  + 1 ]
 
 echo "Enter your username:"
 read USERNAME
+
 USER=$($PSQL "SELECT username FROM users WHERE username = '$USERNAME';")
 if [[ -z $USER ]]
 then
