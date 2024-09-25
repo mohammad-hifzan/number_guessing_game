@@ -3,7 +3,6 @@
 PSQL="psql --username=freecodecamp --dbname=number_guess -t --no-align -c"
 TARGET_NUMBER=$[ ( $RANDOM % 1000 )  + 1 ]
 
-
 echo "Enter your username:"
 read USERNAME
 
@@ -51,7 +50,6 @@ GUESS_GAME() {
   else
     INSERT_SCORE=$($PSQL "UPDATE users SET games_count = $TOTAL_GAMES WHERE username='$USERNAME';")
   fi
-  
 }
 
 GUESS_GAME $GAMES $BEST_SCORE
